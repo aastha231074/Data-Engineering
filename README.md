@@ -174,6 +174,66 @@ DELETE FROM Employees WHERE EmployeeID = 3;
 DELETE FROM Employees WHERE Salary < 30000;
 ```
 
+<b>Alter</b></br>
+
+```sql
+--Add a new column to an existing table
+ALTER TABLE Employee
+ADD Email VARCHAR(5);
+
+-- Add column with constraints
+ALTER TABLE Employee
+ADD Email VARCHAR(100) NOT NULL DEFAULT '';
+
+--Modify the already existing column 
+-- MySQL
+ALTER TABLE Employee
+MODIFY Email VARCHAR(255);
+
+-- SQL Server/PostgreSQL
+ALTER TABLE Employee
+ALTER COLUMN Email VARCHAR(255);
+
+-- Rename a column (MySQL 8.0+, PostgreSQL, SQL Server 2016+)
+ALTER TABLE Employees
+RENAME COLUMN phone TO phone_number;
+
+-- MySQL < 8.0
+ALTER TABLE Employees
+CHANGE phone phone_number VARCHAR(20);
+
+-- SQL Server (older versions)
+EXEC sp_rename 'Employees.phone', 'phone_number', 'COLUMN';
+
+--Drop a column
+ALTER TABLE Employees
+DROP COLUMN phonenumber
+
+--Rename Table
+RENAME TABLE employees to employee
+
+-- Add primary key
+ALTER TABLE Employees
+ADD CONSTRAINT PK_Employee PRIMARY KEY (employee_id);
+
+-- Add foreign key
+ALTER TABLE Orders
+ADD CONSTRAINT FK_Customer 
+FOREIGN KEY (customer_id) REFERENCES Customers(customer_id);
+
+-- Add unique constraint
+ALTER TABLE Employees
+ADD CONSTRAINT UQ_Email UNIQUE (email);
+
+-- Add check constraint
+ALTER TABLE Employees
+ADD CONSTRAINT CHK_Age CHECK (age >= 18);
+
+-- Add not null constraint 
+ALTER TABLE Employees
+MODIFY FirstName varchar(50) NOT NULL;
+```
+
 ![SQL Operations Diagram](sql_operations.png "SQL Operations Overview")
 
 ## 6. Advanced Queries

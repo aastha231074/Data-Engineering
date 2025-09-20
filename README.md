@@ -213,3 +213,13 @@ WHERE Salary > (SELECT AVG(Salary) FROM Employees);
 - WHERE 
 - ORDER BY
 - GROUP BY
+
+### 2. DROP VS TRUNCATE
+```sql
+--This delete the whole table with the structure as well as the data 
+DROP Table Department
+
+--This will only delete the data inside the table
+--We still have the structure of the data present 
+TRUNCATE Table Departments
+```

@@ -88,3 +88,37 @@ FOREIGN KEY (ManagerID) REFERENCES Employees(EmployeeID);
 | TEXT    | Long text strings     | `Description TEXT`|
 | TIME    | HHMMSS     | `ChangeTime TIME`|
 | TIMESTAMP    | Date & Time     | `InsertedTime TIMESTAMP`|
+
+## 4. Constraints 
+<b>Primary Key</b>
+
+```sql
+--Single Column 
+EmployeeID INT PRIMARY KEY
+
+--Multiple Column
+PRIMARY KEY(EmployeeID, ProjectID)
+```
+
+<b>Foreign Key</b>
+
+```sql
+FOREIGN KEY (DepartmentID) references Department(DepartmentID)
+```
+
+<b> Other Constraints </b>
+
+```sql
+--NOT NULL
+FirstName VARCHAR(50) NOT NULL
+
+-- UNIQUE
+Email VARCHAR(100) UNIQUE
+
+-- DEFAULT
+Status VARCHAR(20) DEFAULT 'Active'
+
+-- CHECK
+CHECK (Salary > 0)
+CHECK (EndDate >= StartDate)
+```

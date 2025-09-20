@@ -75,4 +75,14 @@ ALTER TABLE Departments
 ADD CONSTRAINT fk_manager 
 FOREIGN KEY (ManagerID) REFERENCES Employees(EmployeeID);
 ```
-
+## 3. Common Data Types
+| DATA TYPE | DESCRIPTION | EXAMPLE |
+|----------|----------|----------|
+| INT    | Integer numbers     | `Age INT`|
+| VARCHAR(n)   | Variable-length strings     | `Name VARCHAR(50)`|
+| CHAR(n)    | Fixed-length strings     | `CountryCode CHAR(2)`|
+| DECIMAL(p,s)   | Fixed-point number     | `Price DECIMAL(10,2)`|
+| DATE    | Data values     | `BirthDate DATE`|
+| DATETIME    | Date and Time     | `CreatedAt DATETIME` |
+| BOOLEAN    | True/False Value     | `IsActive BOOLEAN`|
+| TEXT    | Long text strings     | `Description TEXT`|

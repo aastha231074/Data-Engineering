@@ -232,6 +232,14 @@ ADD CONSTRAINT CHK_Age CHECK (age >= 18);
 -- Add not null constraint 
 ALTER TABLE Employees
 MODIFY FirstName varchar(50) NOT NULL;
+
+-- Drop constraint by name
+ALTER TABLE Employees
+DROP CONSTRAINT UQ_Email;
+
+-- Drop foreign key (MySQL)
+ALTER TABLE Orders
+DROP FOREIGN KEY FK_Customer;
 ```
 
 ![SQL Operations Diagram](sql_operations.png "SQL Operations Overview")

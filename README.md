@@ -205,3 +205,11 @@ SELECT FirstName, LastName, Salary
 FROM Employees
 WHERE Salary > (SELECT AVG(Salary) FROM Employees);
 ```
+
+# Interview Quetions 
+### 1. Different Clause in SQL 
+- SELECT
+- FROM
+- WHERE 
+- ORDER BY
+- GROUP BY

@@ -86,3 +86,5 @@ FOREIGN KEY (ManagerID) REFERENCES Employees(EmployeeID);
 | DATETIME    | Date and Time     | `CreatedAt DATETIME` |
 | BOOLEAN    | True/False Value     | `IsActive BOOLEAN`|
 | TEXT    | Long text strings     | `Description TEXT`|
+| TIME    | HHMMSS     | `ChangeTime TIME`|
+| TIMESTAMP    | Date & Time     | `InsertedTime TIMESTAMP`|

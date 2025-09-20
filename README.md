@@ -158,7 +158,7 @@ UPDATE Employees
 SET Salary = 52000.00 
 WHERE EmployeeID = 1;
 
--- Update multiple columns
+--Update multiple columns
 UPDATE Employees 
 SET Salary = Salary * 1.05, 
     DepartmentID = 2 
@@ -170,8 +170,38 @@ WHERE EmployeeID = 3;
 ```sql
 DELETE FROM Employees WHERE EmployeeID = 3;
 
--- Delete with conditions
+--Delete with conditions
 DELETE FROM Employees WHERE Salary < 30000;
 ```
 
 ![SQL Operations Diagram](sql_operations.png "SQL Operations Overview")
+
+## 6. Advanced Queries
+
+<b>Aggegrate Functions</b>
+
+```sql
+--Count the number of Employee 
+select COUNT(*) FROM Employees 
+
+-- Average salary by department
+SELECT DepartmentID, AVG(Salary) as AvgSalary
+FROM Employees
+GROUP BY DepartmentID;
+
+-- Department with highest total salary cost
+SELECT DepartmentID, SUM(Salary) as TotalSalary
+FROM Employees
+GROUP BY DepartmentID
+ORDER BY TotalSalary DESC
+LIMIT 1;
+```
+
+<b> Sub Queries </b>
+
+```sql
+-- Employees earning above average
+SELECT FirstName, LastName, Salary
+FROM Employees
+WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+```

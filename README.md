@@ -1,10 +1,20 @@
 # SQL 
 
 ## 1. What is SQL? 
-Structured Query Language is a standard language used to interact with relational database.
+Structured Query Language is a standard language used to interact with relational database.It allows you to create, read, update and delete data as well as manage database structure.
 
-### How to create a table: 
-Example: 
+## 2. Creating Tables 
+Basic Syntax
+```sql
+CREATE TABLE  table_name (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    ...
+    table_constraints
+);
+```
+### Example: 
+Employees Table
 ```sql
 CREATE TABLE  Employees (
   EmployeeID int PRIMARY KEY,
@@ -16,22 +26,53 @@ CREATE TABLE  Employees (
 );
 ```
 
+Department Table
 ```sql
-CREATE TABLE  Departments (
-  DepartmentID int PRIMARY KEY,
-  EmpId int,
-  DepartmentName VARCHAR(100) UNIQUE,
-  CONSTRAINT fk_empid FOREIGN KEY (EmpId) references Employees(EmployeeID)
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100) UNIQUE NOT NULL,
+    ManagerID INT,
+    Budget DECIMAL(15,2),
+    Location VARCHAR(50)
 );
 ```
 
+Projects Table
 ```sql
 CREATE TABLE  Projects (
   ProjectID int PRIMARY KEY,
-++  ProjectName VARCHAR(100) NOT null,
+  ProjectName VARCHAR(100) NOT null,
   Budget Decimal(12,2)
   StartDate Date,
-  EndDate Date
+  EndDate Date,
+  Status VARCHAR(20) DEFAULT 'Active',
+  CHECK (EndDate >= StartDate)
 );
+```
+
+Employee-Project Junction Table
+```sql
+CREATE TABLE EmployeeProjects (
+  EmployeeID INT,
+  ProjectID INT,
+  Role VARCHAR(50),
+  HoursAllocated DECIMAL(5,2),
+  PRIMARY KEY (EmployeeID, ProjectID),
+  FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+  FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
+```
+
+Adding Foreign Key Constraints 
+```sql
+-- Add foreign key to Employees table after Departments is created
+ALTER TABLE Employees 
+ADD CONSTRAINT fk_department 
+FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID);
+
+-- Add foreign key for manager in Departments
+ALTER TABLE Departments 
+ADD CONSTRAINT fk_manager 
+FOREIGN KEY (ManagerID) REFERENCES Employees(EmployeeID);
 ```
 

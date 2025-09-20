@@ -122,3 +122,56 @@ Status VARCHAR(20) DEFAULT 'Active'
 CHECK (Salary > 0)
 CHECK (EndDate >= StartDate)
 ```
+
+## 5. Basic SQL Operations
+<b>Insert</b></br>
+
+```sql
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID, Salary, HireDate)
+VALUES (1, 'John', 'Doe', 1, 50000.00, '2024-01-15');
+
+--Insert multiple rows
+INSERT INTO Employees VALUES 
+(2, 'Jane', 'Smith', 2, 55000.00, '2024-02-01'),
+(3, 'Bob', 'Johnson', 1, 48000.00, '2024-03-10');
+```
+
+<b>Select</b></br>
+
+```sql
+--Select all columns
+SELECT * FROM Employees;
+
+--Select specific columns
+SELECT FirstName, LastName, Salary FROM Employees;
+
+--With conditions
+SELECT * FROM Employees WHERE Salary > 50000;
+
+--With sorting
+SELECT * FROM Employees ORDER BY Salary DESC;
+```
+<b>Update</b></br>
+
+```sql
+UPDATE Employees 
+SET Salary = 52000.00 
+WHERE EmployeeID = 1;
+
+-- Update multiple columns
+UPDATE Employees 
+SET Salary = Salary * 1.05, 
+    DepartmentID = 2 
+WHERE EmployeeID = 3;
+```
+
+<b>Delete</b></br>
+
+```sql
+DELETE FROM Employees WHERE EmployeeID = 3;
+
+-- Delete with conditions
+DELETE FROM Employees WHERE Salary < 30000;
+```
+
+![SQL Operations Diagram](sql_operations.png "SQL Operations Overview")

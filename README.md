@@ -207,7 +207,7 @@ WHERE Salary > (SELECT AVG(Salary) FROM Employees);
 ```
 
 # Interview Quetions 
-### 1. Different Clause in SQL 
+###  1. Different Clause in SQL 
 - SELECT
 - FROM
 - WHERE 

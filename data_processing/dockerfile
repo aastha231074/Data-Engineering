@@ -1,0 +1,19 @@
+FROM python:3.9-alpine
+
+# Install Java 
+RUN apk add --no-cache openjdk11-jre
+
+# Install PySpark
+RUN pip install pyspark pandas
+
+# Set the working directory
+WORKDIR /app
+
+# Copy your files
+COPY . /app
+
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV PYSPARK_PYTHON=python
+ENV PYSPARK_DRIVER_PYTHON=python
+
+CMD ["python", "pyspark.py"]

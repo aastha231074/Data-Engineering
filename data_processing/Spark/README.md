@@ -206,7 +206,7 @@ Driver -> Cluster Manager -> Executors -> Task Execution
             (Send results back to Driver)
                           ↓
 ┌─────────────────────────────────────────────────────────────┐
-│                    DRIVER PROGRAM                            │
+│                    DRIVER PROGRAM                           │
 │  • Collects results from executors                          │
 │  • Aggregates final result                                  │
 │  • Returns to your code                                     │

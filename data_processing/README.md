@@ -187,7 +187,4 @@ This architecture enables Netflix to:
 
 ## Additional Resources
 
-- **Apache Spark Documentation**: Comprehensive guides for PySpark
-- **Dask Documentation**: Tutorials for scaling Python workflows
-- **Pandas Documentation**: In-depth API reference and user guide
-- **Kafka Documentation**: Stream processing architecture and patterns
+- **Apache Spark**: [Read About Spark](https://github.com/aastha231074/Data-Engineering/tree/main/data_processing/Spark "Read About Spark")

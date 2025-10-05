@@ -1,10 +1,15 @@
-FROM python:3.9-alpine
+FROM python:3.9-slim
 
-# Install Java 
-RUN apk add --no-cache openjdk11-jre
+# Install Java 21 and procps (required by Spark)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    openjdk-21-jre-headless \
+    procps \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install PySpark
-RUN pip install pyspark pandas
+RUN pip install --no-cache-dir pyspark pandas
 
 # Set the working directory
 WORKDIR /app
@@ -12,8 +17,10 @@ WORKDIR /app
 # Copy your files
 COPY . /app
 
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-ENV PYSPARK_PYTHON=python
-ENV PYSPARK_DRIVER_PYTHON=python
+# Set Java home for OpenJDK 21
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+ENV PYSPARK_PYTHON=python3
+ENV PYSPARK_DRIVER_PYTHON=python3
 
-CMD ["python", "pyspark.py"]
+CMD ["python3", "main.py"]
